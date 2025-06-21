@@ -1,0 +1,27 @@
+GET http://127.0.0.1:8000/api-tasks/
+
+###
+
+PUT http://127.0.0.1:8000/api-tasks/update-task/5d04fe03-2e04-4f69-a922-7827c7062ddd/
+Content-Type: application/json
+
+{
+  "title":"new title",
+  "description":"new description",
+  "completed":true
+}
+
+###
+
+POST http://127.0.0.1:8000/api-tasks/create-task/
+Content-Type: application/json
+
+{
+  "title":"new title 3",
+  "description":"new description 3",
+  "completed":true
+}
+
+###
+
+DELETE http://127.0.0.1:8000/api-tasks/delete-task/16823d58-f1f5-40c3-80ff-03d03b73d8a0/
