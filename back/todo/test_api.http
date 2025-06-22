@@ -17,8 +17,8 @@ POST http://127.0.0.1:8000/api-tasks/create-task/
 Content-Type: application/json
 
 {
-  "title":"new title 3",
-  "description":"new description 3",
+  "title":"title ",
+  "description":"description ",
   "completed":true
 }
 

@@ -14,13 +14,15 @@ def get_tasks(request):
   serializer = TaskSerializer(tasks,many=True)
   return Response(serializer.data)
 
+#v1
+"""
 @api_view(["POST"])
 def create_task(request):
   title = request.data.get('title')
   description = request.data.get('description')
-  
+
   if not title or not description:
-    return Response({"error":"Title or description are required 😢"},status=status.HTTP_400_BAD_REQUEST)
+    return Response({"error":"Title and description are required 😢"},status=status.HTTP_400_BAD_REQUEST)
 
   if Task.objects.filter(title=title).exists():
     return Response({"error":"Task already exists 😢"},status=status.HTTP_400_BAD_REQUEST)
@@ -32,8 +34,27 @@ def create_task(request):
   )
 
   serializer = TaskSerializer(task)
-  
+
   return Response(serializer.data,status=status.HTTP_201_CREATED)
+"""
+
+#v2
+@api_view(["POST"])
+def create_task(request):
+  serializer = TaskSerializer(data=request.data)
+
+  if not serializer.is_valid():
+    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+  
+  title = serializer.validated_data['title']
+
+  if Task.objects.filter(title=title).exists():
+    return Response({"error":"Task already exists 😢"},status=status.HTTP_400_BAD_REQUEST)
+
+  serializer.save()
+
+  return Response(serializer.data,status=status.HTTP_201_CREATED)
+
 
 @api_view(["PUT"])
 def update_post(request, id):
