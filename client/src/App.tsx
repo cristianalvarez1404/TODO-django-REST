@@ -66,13 +66,13 @@ function App() {
     <>
       <div className="text-white">
         <h1 className="text-3xl mb-5">Tasks</h1>
-        <div
-          onClick={() => setOpenModal(!openModal)}
-          className="flex justify-end items-center text-3xl mb-5 cursor-pointer"
-        >
-          <i className="fa-solid fa-plus"></i>
+        <div className="flex justify-end items-center text-3xl mb-5 cursor-pointer">
+          <i
+            className="fa-solid fa-plus"
+            onClick={() => setOpenModal(!openModal)}
+          ></i>
         </div>
-        <div className="flex gap-5 flex-wrap justify-around">
+        <div className="flex gap-5 flex-wrap justify-start">
           {tasks && tasks.length > 0 ? (
             tasks.map((task: TaskType) => <Task task={task} key={task.id} />)
           ) : (
@@ -83,33 +83,39 @@ function App() {
         {openModal && (
           <div className="rounded-4xl bg-gray-500 opacity-95 border-gray-400 border absolute top-1/4 left-1/4 w-1/2 h-1/3 p-6 flex flex-col text-left ">
             <h3 className="text-2xl text-center mb-2">Creating task...</h3>
+            <div className="flex justify-end text-2xl">
+              <i
+                className="fa-solid fa-xmark cursor-pointer"
+                onClick={() => setOpenModal(!openModal)}
+              ></i>
+            </div>
             <form className="" onSubmit={handleSubmit}>
-              <div className="mb-2">
-                <label htmlFor="" className="bg-blue-600 rounded-2xl p-1 mr-2">
+              <div className="mb-5">
+                <label htmlFor="" className=" rounded-2xl p-1 mr-2">
                   Title:{" "}
                 </label>
                 <input
                   type="text"
                   placeholder=""
                   value={title}
-                  className=" outline-none border-none"
+                  className="w-1/2 outline-none  border-b-1 border-b-white"
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <div className="mb-2">
-                <label htmlFor="" className="bg-blue-600 rounded-2xl p-1 mr-2">
+              <div className="mb-5">
+                <label htmlFor="" className=" rounded-2xl p-1 mr-2">
                   Description:{" "}
                 </label>
                 <input
                   type="text"
                   placeholder=""
                   value={description}
-                  className=" outline-none border-none"
+                  className=" w-1/2 outline-none  border-b-1 border-b-white"
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
               <div className="mb-8">
-                <label htmlFor="" className="bg-blue-600 rounded-2xl p-1 mr-2">
+                <label htmlFor="" className="rounded-2xl p-1 mr-2">
                   Completed:{" "}
                 </label>
                 <input

@@ -71,20 +71,24 @@ const Task = ({ task }: { task: TaskType }) => {
 
   return (
     <>
-      <div className="flex flex-col w-1/5 justify-start items-start border-6 rounded-2xl p-5 border-gray-400 hover:bg-blue-400  transition-all cursor-pointer">
-        <h2 className="border-b-2 mb-2">{task.title}</h2>
-        <p className="text-left mb-2">{task.description}</p>
+      <div className="flex flex-col w-1/4 h-[20rem] justify-start items-start border-6 rounded-2xl p-5 border-gray-400  transition-all cursor-pointer">
+        <h2 className="w-full text-2xl border-b-2 mb-2 text-center p-2">
+          {task.title}
+        </h2>
+        <div className=" w-full h-[10rem]">
+          <p className="text-left mb-2 font-extralight">{task.description}</p>
+        </div>
         <span className="">
           Completed:
           <input
             type="checkbox"
             checked={completedTask}
             onChange={handleToggleCompleted}
-            className="ml-2 w-[15px] h-[15px] border-2 rounded-[5px]"
+            className="w-full ml-2 w-[15px] h-[15px] border-2 rounded-[5px]"
           />
         </span>
         <div className="flex items-center gap-2">
-          <small className="bg-blue-900 rounded-2xl p-1 text-[8px] mt-2">
+          <small className="rounded-2xl p-1 text-[8px] mt-2">
             Created at: {task.created_at}
           </small>
           <i
@@ -107,32 +111,32 @@ const Task = ({ task }: { task: TaskType }) => {
           </div>
           <h3 className="text-2xl text-center">Updating task...</h3>
           <form className="" onSubmit={handleSubmit}>
-            <div className="mb-2">
-              <label htmlFor="" className="bg-blue-600 rounded-2xl p-1 mr-2">
+            <div className="mb-5">
+              <label htmlFor="" className=" rounded-2xl p-1 mr-2">
                 Title:{" "}
               </label>
               <input
                 type="text"
                 placeholder=""
                 value={title}
-                className=" outline-none border-none"
+                className=" w-1/2 outline-none  border-b-1 border-b-white"
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
-            <div className="mb-2">
-              <label htmlFor="" className="bg-blue-600 rounded-2xl p-1 mr-2">
+            <div className="mb-5">
+              <label htmlFor="" className="rounded-2xl p-1 mr-2">
                 Description:{" "}
               </label>
               <input
                 type="text"
                 placeholder=""
                 value={description}
-                className=" outline-none border-none"
+                className="w-[80%] outline-none  border-b-1 border-b-white"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div className="mb-8">
-              <label htmlFor="" className="bg-blue-600 rounded-2xl p-1 mr-2">
+              <label htmlFor="" className="rounded-2xl p-1 mr-2">
                 Completed:{" "}
               </label>
               <input
